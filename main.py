@@ -41,3 +41,7 @@ frame_de_baixo = Frame (janela, width= 720,height=300, bg= co2, pady = 20, relie
 frame_de_baixo.grid(row=2,column=0, pady=0, padx=0, sticky=NSEW)
 
 janela.mainloop()
+
+
+
+teste Bianca
