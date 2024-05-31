@@ -55,3 +55,5 @@ style.configure('TNotebook.Tab', background=co2, foreground=co1, padding=[10,10]
 style.configure('Aba1.TFrame', background=co2, foreground=co2, padding=[10,10])
 style.configure('Aba2.TFrame', background=co2, foreground=co2, padding=[10,10])
 style.configure('Aba3.TFrame', background=co2, foreground=co2, padding=[10,10])
+
+aaaa
