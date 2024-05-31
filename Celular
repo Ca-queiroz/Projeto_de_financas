@@ -27,6 +27,10 @@ janela.resizable(width=FALSE, height=FALSE)
 style=ttk.Style(janela)
 style.theme_use("clam")
 
+# Configurando a cor de fundo das abas
+style.configure('TNotebook.Tab', background=co2, foreground=co1, padding=[98, 15], font=('Arial', 12), wraplength=200)
+style.map('TNotebook.Tab', background=[('selected', co1)], foreground=[('selected', co2)])
+
 # Criando um widget Notebook para as abas
 notebook = ttk.Notebook(janela)
 notebook.pack(fill='both', expand=True)
@@ -36,30 +40,21 @@ notebook.pack(fill='both', expand=True)
 # aba2 = ttk.Frame(notebook)
 # aba3 = ttk.Frame(notebook)
 
-# # Adicionando as frames ao Notebook
-# notebook.add(aba1, text='Fluxo de Finanças')
-# notebook.add(aba2, text='Controle de Gastos')
-# notebook.add(aba3, text='Tabela de Receitas e Despesas')
+# Adicionando as frames ao Notebook
+notebook.add(aba1, text='Fluxo de Finanças')
+notebook.add(aba2, text='Controle de Gastos')
+notebook.add(aba3, text='Tabela de Receitas e Despesas')
 
-criar_aba1(notebook)
-criar_aba2(notebook)
-criar_aba3(notebook)
-
-
-# # Adicionando conteúdo a cada aba
-# ttk.Label(aba1, text="Conteúdo da Aba 1", font=("Arial", 24)).pack(pady=50)
-# ttk.Label(aba2, text="Conteúdo da Aba 2", font=("Arial", 24)).pack(pady=50)
-# ttk.Label(aba3, text="Conteúdo da Aba 3", font=("Arial", 24)).pack(pady=50)
+# Adicionando conteúdo a cada aba
+ttk.Label(aba1, text="Conteúdo da Aba 1", font=("Arial", 24)).pack(pady=50)
+ttk.Label(aba2, text="Conteúdo da Aba 2", font=("Arial", 24)).pack(pady=50)
+ttk.Label(aba3, text="Conteúdo da Aba 3", font=("Arial", 24)).pack(pady=50)
 
 # Iniciando o loop de eventos do Tkinter
 janela.mainloop()
 
 aba1 = ttk.Frame(notebook, style='TNotebook.Tab')
 
-# Configurando a cor de fundo das abas
-style.configure('TNotebook.Tab', background=co2, foreground=co1, padding=[10,10])
+
                                                                           
-# Configurando estilos individuais para cada aba
-style.configure('Aba1.TFrame', background=co2, foreground=co2, padding=[10,10])
-style.configure('Aba2.TFrame', background=co2, foreground=co2, padding=[10,10])
-style.configure('Aba3.TFrame', background=co2, foreground=co2, padding=[10,10])
+
