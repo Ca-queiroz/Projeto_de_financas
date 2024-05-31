@@ -41,9 +41,9 @@ notebook.pack(fill='both', expand=True)
 # notebook.add(aba2, text='Controle de Gastos')
 # notebook.add(aba3, text='Tabela de Receitas e Despesas')
 
-criar_aba1(notebook)
-criar_aba2(notebook)
-criar_aba3(notebook)
+criar_aba1(notebook, co2)
+criar_aba2(notebook, co2)
+criar_aba3(notebook, co2)
 
 
 # # Adicionando conteúdo a cada aba
@@ -56,10 +56,10 @@ janela.mainloop()
 
 aba1 = ttk.Frame(notebook, style='TNotebook.Tab')
 
-# Configurando a cor de fundo das abas
-style.configure('TNotebook.Tab', background=co2, foreground=co1, padding=[10,10])
+# # Configurando a cor de fundo das abas
+# style.configure('TNotebook.Tab', background=co2, foreground=co2, padding=[10,10])
                                                                           
-# Configurando estilos individuais para cada aba
-style.configure('Aba1.TFrame', background=co2, foreground=co2, padding=[10,10])
-style.configure('Aba2.TFrame', background=co2, foreground=co2, padding=[10,10])
-style.configure('Aba3.TFrame', background=co2, foreground=co2, padding=[10,10])
+# # Configurando estilos individuais para cada aba
+# style.configure('Aba1.TFrame', background=co2, foreground=co2, padding=[10,10])
+# style.configure('Aba2.TFrame', background=co2, foreground=co2, padding=[10,10])
+# style.configure('Aba3.TFrame', background=co2, foreground=co2, padding=[10,10])

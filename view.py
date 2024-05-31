@@ -3,11 +3,11 @@ import sqlite3 as lite
 con = lite.connect('dados.bd')
 
 # VIEW Inserir categorias
-def inserir_categoria(i):
+def inserir_categoria(nome_categoria):
     with con:
         cur = con.cursor()
-        query= "INSERT INTO Categorias (nome) VALUES (?)"
-        cur.execute(query,i)
+        cur.execute("INSERT INTO categorias (nome) VALUES (?)", (nome_categoria))
+        con.commit()
       #  NÃO SABEMOS QUAL O VALOR SERÁ INSERIDO = "?"
       # O "i" significa a classificação do gasto, como alimentação, lazer, transporte, investimento e etc.- tem que passar com valor de LISTA
       # def inserir_categoria (["alimentação"]) - temos que passar como lista
@@ -20,7 +20,7 @@ def inserir_receita(i):
         cur.execute(query,i)
 
 # VIEW Inserir gastos
-def inserir_categoria(i):
+def inserir_despesa(i):
     with con:
         cur = con.cursor()
         query= "INSERT INTO Gastos (categoria, retirado_em,valor) VALUES (?,?,?)"
@@ -42,6 +42,14 @@ def deletar_Gastos(i):
     query= "DELETE FROM Gastos"
     cur.execute (query, i)
 
+# DELETAR GASTOS
+def deletar_categoria():
+  with con:
+    cur = con.cursor()
+    query= "DELETE FROM categorias"
+    cur.execute (query)
+    con.commit()
+
 #Funções para ver dados ----------------------------------------
 
 #Ver categoria
@@ -50,11 +58,9 @@ def ver_categorias():
   lista_itens=[]
   with con:
     cur = con.cursor()
-    cur.execute("SELECT * FROM Categorias")
-    linha = cur.fetchall()
-    for l in linha:
-      lista_itens.append(l)
-
+    cur.execute("SELECT nome FROM categorias")
+    categorias = [row[0] for row in cur.fetchall()]
+    return categorias
   return lista_itens
 
 
