@@ -1,5 +1,5 @@
 import sqlite3 as lite
-
+000
 con = lite.connect('dados.bd')
 
 #Tabela de categorias
