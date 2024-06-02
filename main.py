@@ -1,9 +1,8 @@
-#COMEÇANDO A DESENHAR A TELA - PASTA
-
 from tkinter import *
-from tkinter import Tk, ttk # tkinter é uma bilioteca que ele chama para criação de tela com py - interface gráfica do py
-
-#cores 
+from tkinter import Tk, ttk 
+from abas.fluxo_de_financas import criar_aba1
+from abas.controle_de_gastos import criar_aba2
+from abas.tabela_de_receitas_e_despesas import criar_aba3 
 
 co0 = "#2e2d2b" #preta
 co1 = "#feffff" #branca
@@ -18,7 +17,6 @@ co9 = "#e9edf5"
 
 colors = ["#5588bb", "#66bbbb", "#99bb55", "#ee9944", "#444466", "bb5555"]
 
-
 #criando janela 
 janela = Tk()
 janela.title()
@@ -26,22 +24,18 @@ janela.geometry("720x1280")
 janela.configure(background=co2)
 janela.resizable(width=FALSE, height=FALSE)
 
-style= ttk.Style(janela)
+style=ttk.Style(janela)
 style.theme_use("clam")
 
+# Criando um widget Notebook para as abas
+notebook = ttk.Notebook(janela)
+notebook.pack(fill='both', expand=True)
 
-#Crinado frames para divisão de tela
-frame_de_cima = Frame (janela, width= 720,height=50, bg= co0, relief = "flat")
-frame_de_cima.grid(row=0,column=0)
+#Criando as abas
+criar_aba1(notebook, co2)
+criar_aba2(notebook, co2)
+criar_aba3(notebook, co2)
 
-frame_do_meio = Frame (janela, width= 720,height=361, bg= co0, pady = 20, relief = "raised")
-frame_do_meio.grid(row=1,column=0, pady=1, padx=0, sticky=NSEW)
 
-frame_de_baixo = Frame (janela, width= 720,height=300, bg= co2, pady = 20, relief = "flat")
-frame_de_baixo.grid(row=2,column=0, pady=0, padx=0, sticky=NSEW)
-
+# Iniciando o loop de eventos do Tkinter
 janela.mainloop()
-
-
-
-teste Bianca
