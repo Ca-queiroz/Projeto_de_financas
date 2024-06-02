@@ -1,6 +1,6 @@
 from tkinter import *
 from tkinter import Tk, ttk 
-from abas.fluxo_de_financas import criar_aba1
+from abas.fluxo_de_finanças import criar_aba1
 from abas.controle_de_gastos import criar_aba2
 from abas.tabela_de_receitas_e_despesas import criar_aba3 
 
