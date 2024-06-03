@@ -20,7 +20,7 @@ colors = ["#5588bb", "#66bbbb", "#99bb55", "#ee9944", "#444466", "bb5555"]
 #criando janela 
 janela = Tk()
 janela.title()
-janela.geometry("720x1280")
+janela.geometry("1280x800")
 janela.configure(background=co2)
 janela.resizable(width=FALSE, height=FALSE)
 

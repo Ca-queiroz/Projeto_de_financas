@@ -6,85 +6,93 @@ con = lite.connect('dados.bd')
 def inserir_categoria(nome_categoria):
     with con:
         cur = con.cursor()
-        cur.execute("INSERT INTO categorias (nome) VALUES (?)", (nome_categoria))
+        cur.execute("INSERT INTO Categorias (nome) VALUES (?)", (nome_categoria,))
         con.commit()
       #  NÃO SABEMOS QUAL O VALOR SERÁ INSERIDO = "?"
       # O "i" significa a classificação do gasto, como alimentação, lazer, transporte, investimento e etc.- tem que passar com valor de LISTA
       # def inserir_categoria (["alimentação"]) - temos que passar como lista
 
 # VIEW  Inserir receitas/patrimônio
-def inserir_receita(i):
+def inserir_receita(adicionado_em, valor, categoria):
     with con:
         cur = con.cursor()
-        query= "INSERT INTO Saldo_e_Investimentos (categoria, adicionado_em,valor) VALUES (?,?,?)"
-        cur.execute(query,i)
+        cur.execute("INSERT INTO Saldo_e_Investimentos (adicionado_em, valor, categoria) VALUES (?,?,?)", (adicionado_em, valor, categoria,))
+        con.commit()
 
 # VIEW Inserir gastos
-def inserir_despesa(i):
+def inserir_despesa(retirado_em, valor, categoria):
     with con:
         cur = con.cursor()
-        query= "INSERT INTO Gastos (categoria, retirado_em,valor) VALUES (?,?,?)"
-        cur.execute(query,i)
+        cur.execute("INSERT INTO Gastos (retirado_em, valor, categoria) VALUES (?,?,?)", (retirado_em, valor, categoria,))
+        con.commit()
 
 #Funções para deletar ---------------------------------------
 
 # DELETAR RECEITAS
-def deletar_Saldo_e_investimentos(i):
+def deletar_Saldo_e_investimentos(receita_excluida):
   with con:
     cur = con.cursor()
-    query= "DELETE FROM Saldo_e_investimentos"
-    cur.execute (query, i)
-
-# DELETAR GASTOS
-def deletar_Gastos(i):
-  with con:
-    cur = con.cursor()
-    query= "DELETE FROM Gastos"
-    cur.execute (query, i)
-
-# DELETAR GASTOS
-def deletar_categoria():
-  with con:
-    cur = con.cursor()
-    query= "DELETE FROM categorias"
-    cur.execute (query)
+    cur.execute("DELETE FROM Saldo_e_investimentos where id = ?", (receita_excluida,))
     con.commit()
+
+# DELETAR GASTOS
+def deletar_Gastos(despesa_excluida):
+  with con:
+    cur = con.cursor()
+    cur.execute("DELETE FROM Gastos where id = ?", (despesa_excluida,))
+    con.commit()
+
+# DELETAR GASTOS
+def deletar_categoria(categoria_excluida):
+  with con:
+    cur = con.cursor()
+    cur.execute("DELETE FROM categorias where id = ?", (categoria_excluida,))
+    con.commit()
+    
 
 #Funções para ver dados ----------------------------------------
 
 #Ver categoria
 
-def ver_categorias():
-  lista_itens=[]
-  with con:
-    cur = con.cursor()
-    cur.execute("SELECT nome FROM categorias")
-    categorias = [row[0] for row in cur.fetchall()]
-    return categorias
-  return lista_itens
+def ver_categorias(conexao_bd, campo):
+  cur = conexao_bd.cursor()
+  cur.execute(f'SELECT {campo} FROM Categorias')
+  categorias = cur.fetchall()
+  return categorias
+
+def ver_categorias_full(conexao_bd):
+  cur = conexao_bd.cursor()
+  cur.execute('SELECT * FROM Categorias')
+  categorias = cur.fetchall()
+  return categorias
 
 
 # VER RECEITA
-def ver_Saldo_e_investimentos():
-  lista_itens=[]
-  with con:
-    cur = con.cursor()
-    cur.execute("SELECT * FROM Saldo_e_investimentos")
-    linha = cur.fetchall()
-    for l in linha:
-      lista_itens.append(l)
+def ver_Saldo_e_investimentos(conexao_bd):
+  cur = conexao_bd.cursor()
+  cur.execute("SELECT id FROM Saldo_e_investimentos")
+  receita = cur.fetchall()
+  return receita
 
-  return lista_itens
+# VER RECEITA
+def ver_Saldo_e_investimentos_full(conexao_bd):
+  cur = conexao_bd.cursor()
+  cur.execute("SELECT * FROM Saldo_e_investimentos")
+  receita = cur.fetchall()
+  return receita
 
 # VER GASTOS
-def ver_Saldo_e_investimentos():
-  lista_itens=[]
-  with con:
-    cur = con.cursor()
-    cur.execute("SELECT * FROM Saldo_e_investimentos")
-    linha = cur.fetchall()
-    for l in linha:
-      lista_itens.append(l)
+def ver_Gastos(conexao_bd):
+  cur = conexao_bd.cursor()
+  cur.execute("SELECT id FROM Gastos")
+  despesa = cur.fetchall()
+  return despesa
 
-  return lista_itens
+# VER GASTOS
+def ver_Gastos_full(conexao_bd):
+  cur = conexao_bd.cursor()
+  cur.execute("SELECT * FROM Gastos")
+  despesa = cur.fetchall()
+  return despesa
+
 
