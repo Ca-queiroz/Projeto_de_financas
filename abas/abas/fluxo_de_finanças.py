@@ -175,6 +175,7 @@ def resumo():
   l_sumario = Label(Framebaixo1, text = 'R$ {:,.2F}'.format(valor[2]), font = ('Arial 17'), bg = co2, fg = co4)
   l_sumario.place(x=309, y = 230)
 
+#aaa
 
 
 percentagem()
