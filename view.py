@@ -20,7 +20,7 @@ def inserir_receita(i):
         cur.execute(query,i)
 
 # VIEW Inserir gastos
-def inserir_categoria(i):
+def inserir_gastos(i):
     with con:
         cur = con.cursor()
         query= "INSERT INTO Gastos (categoria, retirado_em,valor) VALUES (?,?,?)"
@@ -71,7 +71,7 @@ def ver_Saldo_e_investimentos():
   return lista_itens
 
 # VER GASTOS
-def ver_Saldo_e_investimentos():
+def ver_Gastos():
   lista_itens=[]
   with con:
     cur = con.cursor()

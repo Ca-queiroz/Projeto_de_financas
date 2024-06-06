@@ -5,6 +5,9 @@ from tkinter import ttk
 from PIL import Image, ImageTk
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+from tkinter import messagebox
+import pandas as pd
+import view
 
 co0 = "#2e2d2b"  # preta
 co1 = "#feffff"  # branca
@@ -82,19 +85,29 @@ imagem3 = ImageTk.PhotoImage(file="abas/abas/receitaedespesasimg.png")
 label_imagem3 = tk.Label(Framecima3, image=imagem3)
 label_imagem3.pack()
 
+#Ponte entre grafico e tabela
+def pie_valores():
+    gastos = ver_Gastos
+    tabela_lista =[]
+    for i in gastos:
+        tabela_lista.append(i)
+    dataframe = pd.DataFrame(tabela_lista, columns=['id','Categorias','Data', 'Valor'])
+    dataframe= dataframe.groupby(Categorias)[valores].sum()
+    
+    lista_quantias= dataframe.values.tolist()
+    lista_categorias=[]
+
+    for i in dataframe.index:
+        lista_categorias.append(i)
+    
+    return([lista_categorias, lista_quantias])
+
 # Criando gráfico de pizza
-fig = Figure(figsize=(7,4), facecolor=co2)
+fig = Figure(figsize=(9,5), facecolor=co2,)
 ax = fig.add_subplot(111)
 
-opções = ["Alimentação",
-          "Transporte",
-          "Saúde",
-          "Lazer","Educação","Gastos fixos"]
-valores=[200,300,450,100,300]
-
-data = [float(x) for x in valores]
-Categorias = [x for x in opções]
-
+lista_valores=pie_valores()[1]
+Categorias = pie_valores()[0]
 
 def func(pct, allvals):
     absolute = int(np.round(pct / 100. * np.sum(allvals)))
@@ -124,6 +137,6 @@ ax.set_title("Acompanhe seus gastos mensais aqui, e se planeje\n melhor para o m
 # Converte o gráfico de pizza para um widget Tkinter e adiciona à aba2
 canvas = FigureCanvasTkAgg(fig, master=Framebaixo2)
 canvas.draw()
-canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=1)
+canvas.get_tk_widget().pack(side=tk.RIGHT, fill=tk.BOTH, expand=1)
 
 janela.mainloop()

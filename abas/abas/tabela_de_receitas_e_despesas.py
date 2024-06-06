@@ -1,7 +1,7 @@
 from tkinter import ttk, Frame, Entry, Button
 from tkcalendar import Calendar, DateEntry
 from datetime import date
-import view 
+import view
 import sqlite3 as lite
 
 global conexao_bd
