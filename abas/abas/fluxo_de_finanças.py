@@ -214,6 +214,7 @@ e_valor_despesas.place(x=120, y = 411)
 
 
 
+
 percentagem()
 grafico_bar()
 resumo()
