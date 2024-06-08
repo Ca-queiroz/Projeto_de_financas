@@ -81,6 +81,14 @@ def ver_Saldo_e_investimentos_full(conexao_bd):
   receita = cur.fetchall()
   return receita
 
+# Ver receita sumarizada
+def ver_Saldo_e_investimentos_sum(conexao_bd):
+  cur = conexao_bd.cursor()
+  cur.execute("SELECT sum(valor) FROM Saldo_e_investimentos")
+  receita_sum = cur.fetchall()
+  return receita_sum[0][0]
+ 
+
 # VER GASTOS
 def ver_Gastos(conexao_bd):
   cur = conexao_bd.cursor()
@@ -95,4 +103,24 @@ def ver_Gastos_full(conexao_bd):
   despesa = cur.fetchall()
   return despesa
 
+def ver_Gastos_sum(conexao_bd):
+  cur = conexao_bd.cursor()
+  cur.execute("SELECT sum(valor) FROM Gastos")
+  despesa_sum = cur.fetchall()
+  return despesa_sum[0][0]
 
+def ver_gastos_agrupados_por_categoria(conexao_bd):
+  cur = conexao_bd.cursor()
+  cur.execute("SELECT categoria, sum(valor) as valor FROM Gastos group by categoria")
+  despesa_sum_group_by = cur.fetchall()
+  return despesa_sum_group_by  
+
+
+def ver_Gastos_2():
+  lista_itens=[]
+  with con:
+    cur = con.cursor()
+    cur.execute("SELECT * FROM Saldo_e_investimentos")
+    linha = cur.fetchall()
+    for l in linha:
+      lista_itens.append(l)  

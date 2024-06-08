@@ -1,7 +1,9 @@
-from tkinter import ttk, Frame, Entry, Button, messagebox
+from PIL import Image, ImageTk
+from tkinter import PhotoImage
+from tkinter import Tk, ttk, Frame, Entry, Button, messagebox
 from tkcalendar import Calendar, DateEntry
 from datetime import date
-import view git 
+import view as view 
 import sqlite3 as lite
 
 global conexao_bd
@@ -13,7 +15,8 @@ def criar_aba3(notebook, bg_color):
         aba3 = Frame(notebook, bg=bg_color)
         notebook.add(aba3, text='Tabela de Receitas e Despesas')
         ttk.Label(aba3, text="Movimentação do seu Dinheiro", font=("Helvetica", 24), background=bg_color).pack(pady=5)
-        
+    
+
         # Container para os espaços de adicionar
         container_adicionar = Frame(aba3, bg=bg_color)
         container_adicionar.pack(pady=20, side='top')
@@ -255,5 +258,7 @@ def excluir_categoria(categoria):
     #botão de deletar 
 #Criar Nova categoria 
     # botão adicionar categoria 
+
+
 
 
