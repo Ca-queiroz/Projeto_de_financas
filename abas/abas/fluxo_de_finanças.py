@@ -10,6 +10,10 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from tkcalendar import Calendar, DateEntry
 from datetime import date
 
+
+from view import bar_valores, inserir_categoria, inserir_gastos, inserir_receita
+
+
 co0 = "#2e2d2b"  # preta
 co1 = "#feffff"  # branca
 co2 = "#B1E492"  # verde
