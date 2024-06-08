@@ -43,9 +43,17 @@ def criar_aba1(notebook, bg_color):
 
     aba1 = Frame(notebook, bg=bg_color)  # Usando Frame do Tkinter para suportar a configuração de cor de fundo
     notebook.add(aba1, text='Fluxo de Finanças')
-    ttk.Label(aba1, text="Conteúdo da Aba 1", font=("Arial", 24), background=bg_color).pack(pady=50)
-    Framebaixo1 = tk.Frame(aba1, width=720, height=1280, bg=co2, relief="flat")
-    Framebaixo1.pack(side=tk.TOP, fill=tk.X)  
+    Framecima = Frame(aba1, width=1280, height=150, relief="flat")
+    Framecima.pack(side='top', fill='both')
+    imagem1 = Image.open("abas/images/fluxodeinançasimg.png")
+    imagem1 = ImageTk.PhotoImage(imagem1)
+    label_imagem1 = tk.Label(Framecima, image=imagem1)
+    label_imagem1.image = imagem1  # Garante que a imagem não seja apagada pela coleta de lixo
+    label_imagem1.pack()
+    container_adicionar = Frame(aba1, bg=bg_color)
+    container_adicionar.pack(pady=20, side='top')
+    Framebaixo1 = tk.Frame(container_adicionar, width=720, height=1280, bg=co2, relief="flat")
+    Framebaixo1.pack(side='left', fill='both')  
 
     percentagem(Framebaixo1)
     grafico_bar(Framebaixo1)

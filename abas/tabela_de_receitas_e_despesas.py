@@ -1,5 +1,6 @@
 from PIL import Image, ImageTk
 from tkinter import PhotoImage
+import tkinter as tk
 from tkinter import Tk, ttk, Frame, Entry, Button, messagebox
 from tkcalendar import Calendar, DateEntry
 from datetime import date
@@ -8,14 +9,21 @@ import sqlite3 as lite
 
 global conexao_bd
 conexao_bd = lite.connect('dados.bd')
-
+# Carregando as imagens para as abas
+# imagem1 = Image.open("abas/images/fluxodeinançasimg.png")
+# imagem1 = ImageTk.PhotoImage(imagem1)
 
 def criar_aba3(notebook, bg_color):
     while True:
         aba3 = Frame(notebook, bg=bg_color)
         notebook.add(aba3, text='Tabela de Receitas e Despesas')
-        ttk.Label(aba3, text="Movimentação do seu Dinheiro", font=("Helvetica", 24), background=bg_color).pack(pady=5)
-    
+        Framecima = Frame(aba3, width=1280, height=150, relief="flat")
+        Framecima.pack(side='top', fill='both')
+        imagem1 = Image.open("abas/images/receitaedespesasimg.png")
+        imagem1 = ImageTk.PhotoImage(imagem1)
+        label_imagem1 = tk.Label(Framecima, image=imagem1)
+        label_imagem1.image = imagem1  # Garante que a imagem não seja apagada pela coleta de lixo
+        label_imagem1.pack()
 
         # Container para os espaços de adicionar
         container_adicionar = Frame(aba3, bg=bg_color)

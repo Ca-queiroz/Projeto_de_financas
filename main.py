@@ -23,7 +23,7 @@ colors = ['#5588bb', '#66bbbb', '#99bb55', '#ee9944', '#444466', '#bb5555']
 #criando janela 
 janela = Tk()
 janela.title()
-janela.geometry("1280x800")
+janela.geometry("1280x1000")
 janela.configure(background=co2)
 janela.resizable(width=FALSE, height=FALSE)
 
@@ -51,20 +51,20 @@ aba3 = criar_aba3(notebook, co2)
 aba1 = criar_aba1(notebook, co2)
 aba2 = criar_aba2(notebook, co2)
 
-# Carregando as imagens para as abas
-imagem1 = Image.open("abas/images/fluxodeinançasimg.png")
-imagem1 = ImageTk.PhotoImage(imagem1)
+# # Carregando as imagens para as abas
+# imagem1 = Image.open("abas/images/fluxodefinancasimg.png")
+# imagem1 = ImageTk.PhotoImage(imagem1)
 
-imagem2 = Image.open("abas/images/controledegastosimg.png")
-imagem2 = ImageTk.PhotoImage(imagem2)
+# imagem2 = Image.open("abas/images/controledegastosimg.png")
+# imagem2 = ImageTk.PhotoImage(imagem2)
 
-imagem3 = Image.open("abas/images/receitaedespesasimg.png")
-imagem3 = ImageTk.PhotoImage(imagem3)
+# imagem3 = Image.open("abas/images/receitaedespesasimg.png")
+# imagem3 = ImageTk.PhotoImage(imagem3)
 
-# Adicionando as abas ao notebook com as imagens
-notebook.add(aba1, image=imagem1, compound='left')
-notebook.add(aba2, image=imagem2, compound='left')
-notebook.add(aba3, image=imagem3, compound='left')
+# # Adicionando as abas ao notebook com as imagens
+# notebook.add(aba1, image=imagem1, compound='left')
+# notebook.add(aba2, image=imagem2, compound='left')
+# notebook.add(aba3, image=imagem3, compound='left')
 
 
 

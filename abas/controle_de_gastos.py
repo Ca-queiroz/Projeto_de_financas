@@ -50,7 +50,13 @@ ax = fig.add_subplot(111)
 def criar_aba2(notebook, bg_color):
     aba2 = Frame(notebook, bg=bg_color)  # Usando Frame do Tkinter para suportar a configuração de cor de fundo
     notebook.add(aba2, text='Controle de Gastos')
-    ttk.Label(aba2, text="Conteúdo da Aba 2", font=("Arial", 24), background=bg_color).pack(pady=50)
+    Framecima = Frame(aba2, width=1280, height=150, relief="flat")
+    Framecima.pack(side='top', fill='both')
+    imagem1 = Image.open("abas/images/controledegastosimg.png")
+    imagem1 = ImageTk.PhotoImage(imagem1)
+    label_imagem1 = tk.Label(Framecima, image=imagem1)
+    label_imagem1.image = imagem1  # Garante que a imagem não seja apagada pela coleta de lixo
+    label_imagem1.pack()
     global Framebaixo2
     Framebaixo2 = tk.Frame(aba2, width=720, height=1280, bg=co2, relief="raised")
     Framebaixo2.pack(side=tk.TOP, fill=tk.X)
