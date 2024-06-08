@@ -39,3 +39,4 @@ criar_aba3(notebook, co2)
 
 # Iniciando o loop de eventos do Tkinter
 janela.mainloop()
+
